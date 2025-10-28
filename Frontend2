@@ -1,0 +1,261 @@
+import React, { useState, useEffect } from 'react';
+import { Search, ExternalLink, DollarSign, Filter } from 'lucide-react';
+
+// Mock API - Replace with actual backend calls
+const API_BASE_URL = 'http://localhost:5000/api';
+
+const Insureaid = () => {
+  const [providers, setProviders] = useState([]);
+  const [filteredProviders, setFilteredProviders] = useState([]);
+  const [minPrice, setMinPrice] = useState('');
+  const [maxPrice, setMaxPrice] = useState('');
+  const [loading, setLoading] = useState(false);
+  const [error, setError] = useState('');
+
+  // Mock data for demonstration
+  const mockProviders = [
+    {
+      _id: '1',
+      name: 'ISO Insurance',
+      price: 450,
+      website_link: 'https://www.isoa.org'
+    },
+    {
+      _id: '2',
+      name: 'Student Guard',
+      price: 600,
+      website_link: 'https://www.studentguard.com'
+    },
+    {
+      _id: '3',
+      name: 'International Care Plus',
+      price: 550,
+      website_link: 'https://www.intlcareplus.com'
+    },
+    {
+      _id: '4',
+      name: 'Campus Health Shield',
+      price: 480,
+      website_link: 'https://www.campushealth.com'
+    },
+    {
+      _id: '5',
+      name: 'Global Student Insurance',
+      price: 520,
+      website_link: 'https://www.globalstudent.com'
+    },
+    {
+      _id: '6',
+      name: 'Academic Care Network',
+      price: 395,
+      website_link: 'https://www.academiccare.com'
+    }
+  ];
+
+  // Load all providers on mount
+  useEffect(() => {
+    loadProviders();
+  }, []);
+
+  const loadProviders = () => {
+    setLoading(true);
+    // Simulate API call
+    setTimeout(() => {
+      setProviders(mockProviders);
+      setFilteredProviders(mockProviders);
+      setLoading(false);
+    }, 500);
+  };
+
+  const handleApplyFilter = () => {
+    setError('');
+    
+    // Validation
+    const min = parseFloat(minPrice);
+    const max = parseFloat(maxPrice);
+
+    if (minPrice && isNaN(min)) {
+      setError('Please enter a valid minimum price');
+      return;
+    }
+
+    if (maxPrice && isNaN(max)) {
+      setError('Please enter a valid maximum price');
+      return;
+    }
+
+    if (minPrice && maxPrice && min > max) {
+      setError('Minimum price cannot be greater than maximum price');
+      return;
+    }
+
+    // Filter logic
+    setLoading(true);
+    setTimeout(() => {
+      const filtered = providers.filter(provider => {
+        const price = provider.price;
+        const meetsMin = !minPrice || price >= min;
+        const meetsMax = !maxPrice || price <= max;
+        return meetsMin && meetsMax;
+      });
+      
+      setFilteredProviders(filtered);
+      setLoading(false);
+    }, 300);
+  };
+
+  const handleClearFilter = () => {
+    setMinPrice('');
+    setMaxPrice('');
+    setError('');
+    setFilteredProviders(providers);
+  };
+
+  return (
+    <div className="min-h-screen bg-gradient-to-br from-blue-50 to-indigo-100">
+      {/* Header */}
+      <header className="bg-gradient-to-r from-blue-600 to-indigo-700 text-white shadow-lg">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-6">
+          <h1 className="text-4xl font-bold flex items-center gap-3">
+            <DollarSign className="w-10 h-10" />
+            InsureConnect
+          </h1>
+          <p className="text-blue-100 mt-2">Affordable Insurance for International Students</p>
+        </div>
+      </header>
+
+      {/* Main Content */}
+      <main className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
+        {/* Filter Section */}
+        <div className="bg-white rounded-lg shadow-md p-6 mb-8">
+          <div className="flex items-center gap-2 mb-4">
+            <Filter className="w-5 h-5 text-blue-600" />
+            <h2 className="text-xl font-semibold text-gray-800">Filter by Price</h2>
+          </div>
+          
+          <div className="flex flex-wrap items-end gap-4">
+            <div className="flex-1 min-w-[150px]">
+              <label className="block text-sm font-medium text-gray-700 mb-2">
+                Minimum Price ($)
+              </label>
+              <input
+                type="number"
+                placeholder="e.g., 400"
+                value={minPrice}
+                onChange={(e) => setMinPrice(e.target.value)}
+                className="w-full px-4 py-2 border border-gray-300 rounded-md focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+              />
+            </div>
+
+            <div className="flex-1 min-w-[150px]">
+              <label className="block text-sm font-medium text-gray-700 mb-2">
+                Maximum Price ($)
+              </label>
+              <input
+                type="number"
+                placeholder="e.g., 600"
+                value={maxPrice}
+                onChange={(e) => setMaxPrice(e.target.value)}
+                className="w-full px-4 py-2 border border-gray-300 rounded-md focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+              />
+            </div>
+
+            <button
+              onClick={handleApplyFilter}
+              className="bg-green-500 hover:bg-green-600 text-white px-6 py-2 rounded-md font-semibold transition-colors shadow-md hover:shadow-lg"
+            >
+              Apply Filter
+            </button>
+
+            <button
+              onClick={handleClearFilter}
+              className="bg-gray-500 hover:bg-gray-600 text-white px-6 py-2 rounded-md font-semibold transition-colors shadow-md hover:shadow-lg"
+            >
+              Clear
+            </button>
+          </div>
+
+          {error && (
+            <div className="mt-4 bg-red-50 border border-red-200 text-red-700 px-4 py-3 rounded-md">
+              {error}
+            </div>
+          )}
+        </div>
+
+        {/* Provider List Section */}
+        <div>
+          <h2 className="text-2xl font-bold text-gray-800 mb-6 flex items-center gap-2">
+            <Search className="w-6 h-6" />
+            Available Insurance Providers
+            <span className="text-sm font-normal text-gray-500">
+              ({filteredProviders.length} {filteredProviders.length === 1 ? 'provider' : 'providers'})
+            </span>
+          </h2>
+
+          {loading ? (
+            <div className="text-center py-12">
+              <div className="inline-block animate-spin rounded-full h-12 w-12 border-b-2 border-blue-600"></div>
+              <p className="mt-4 text-gray-600">Loading providers...</p>
+            </div>
+          ) : filteredProviders.length === 0 ? (
+            <div className="bg-white rounded-lg shadow-md p-12 text-center">
+              <p className="text-gray-600 text-lg">No insurance providers found matching your criteria.</p>
+              <button
+                onClick={handleClearFilter}
+                className="mt-4 text-blue-600 hover:text-blue-800 font-semibold"
+              >
+                Clear filters to see all providers
+              </button>
+            </div>
+          ) : (
+            <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
+              {filteredProviders.map((provider) => (
+                <div
+                  key={provider._id}
+                  className="bg-white rounded-lg shadow-md hover:shadow-xl transition-shadow p-6 border border-gray-200"
+                >
+                  <h3 className="text-xl font-bold text-gray-800 mb-3">
+                    {provider.name}
+                  </h3>
+                  
+                  <div className="mb-4">
+                    <p className="text-sm text-gray-600 mb-1">Price per semester</p>
+                    <p className="text-3xl font-bold text-blue-600">
+                      ${provider.price.toFixed(2)}
+                    </p>
+                  </div>
+
+                  <a
+                    href={provider.website_link}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="inline-flex items-center gap-2 bg-blue-600 hover:bg-blue-700 text-white px-6 py-3 rounded-md font-semibold transition-colors w-full justify-center"
+                  >
+                    Visit Website
+                    <ExternalLink className="w-4 h-4" />
+                  </a>
+                </div>
+              ))}
+            </div>
+          )}
+        </div>
+      </main>
+
+      {/* Footer */}
+      <footer className="bg-gray-800 text-white mt-16">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
+          <div className="text-center">
+            <p className="text-gray-400">
+              © 2025 InsureConnect. Helping international students find affordable insurance.
+            </p>
+            <p className="text-sm text-gray-500 mt-2">
+              Built with React, Node.js, and MongoDB
+            </p>
+          </div>
+        </div>
+      </footer>
+    </div>
+  );
+};
+
+export default InsureConnect;
