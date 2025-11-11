@@ -172,7 +172,9 @@ app.post('/api/seed', async (req, res) => {
       { provider_id: 'icp_003', name: 'International Care Plus', price: 550, website_link: 'https://www.intlcareplus.com' },
       { provider_id: 'chs_004', name: 'Campus Health Shield', price: 480, website_link: 'https://www.campushealth.com' },
       { provider_id: 'gsi_005', name: 'Global Student Insurance', price: 520, website_link: 'https://www.globalstudent.com' },
-      { provider_id: 'acn_006', name: 'Academic Care Network', price: 395, website_link: 'https://www.academiccare.com' }
+      { provider_id: 'acn_006', name: 'Academic Care Network', price: 395, website_link: 'https://www.academiccare.com' },
+      { provider_id: 'eyt_007', name: 'Student Secure', price: 105, website_link: 'http://www.internationalstudentinsurance.com' }
+      
     ];
     
     await InsuranceProvider.insertMany(sampleProviders);
