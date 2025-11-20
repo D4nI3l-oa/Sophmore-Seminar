@@ -175,6 +175,10 @@ app.post('/api/seed', async (req, res) => {
       { provider_id: 'acn_006', name: 'Academic Care Network', price: 395, website_link: 'https://www.academiccare.com' },
       { provider_id: 'eyt_007', name: 'Student Secure', price: 105, website_link: 'http://www.internationalstudentinsurance.com' },
       { provider_id: 'fdu_008', name: 'Student Journey Lite', price: 150, website_link: 'https://www.imglobal.com/travel-medical-insurance/student-journey-lite' },
+      { provider_id: 'uhi_007', name: 'Universal Health Insurance', price: 475, website_link: 'https://www.universalhealth.com' },
+      { provider_id: 'psi_008', name: 'Premier Student Insurance', price: 425, website_link: 'https://www.premierstudent.com' },
+      { provider_id: 'gci_009', name: 'Global Care International', price: 565, website_link: 'https://www.globalcare.com' },
+      { provider_id: 'asi_010', name: 'American Student Insurance', price: 510, website_link: 'https://www.americanstudent.com' }
       
     ];
     
