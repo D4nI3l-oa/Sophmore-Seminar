@@ -175,10 +175,30 @@ app.post('/api/seed', async (req, res) => {
       { provider_id: 'acn_006', name: 'Academic Care Network', price: 395, website_link: 'https://www.academiccare.com' },
       { provider_id: 'eyt_007', name: 'Student Secure', price: 105, website_link: 'http://www.internationalstudentinsurance.com' },
       { provider_id: 'fdu_008', name: 'Student Journey Lite', price: 150, website_link: 'https://www.imglobal.com/travel-medical-insurance/student-journey-lite' },
-      { provider_id: 'uhi_007', name: 'Universal Health Insurance', price: 475, website_link: 'https://www.universalhealth.com' },
-      { provider_id: 'psi_008', name: 'Premier Student Insurance', price: 425, website_link: 'https://www.premierstudent.com' },
+      { provider_id: 'uhi_031', name: 'Universal Health Insurance', price: 475, website_link: 'https://www.universalhealth.com' },
+      { provider_id: 'psi_032', name: 'Premier Student Insurance', price: 425, website_link: 'https://www.premierstudent.com' },
       { provider_id: 'gci_009', name: 'Global Care International', price: 565, website_link: 'https://www.globalcare.com' },
-      { provider_id: 'asi_010', name: 'American Student Insurance', price: 510, website_link: 'https://www.americanstudent.com' }
+      { provider_id: 'asi_010', name: 'American Student Insurance', price: 510, website_link: 'https://www.americanstudent.com' },
+      { provider_id: 'ssi_011', name: 'Scholar Shield Insurance', price: 380, website_link: 'https://www.scholarshield.com' },
+      { provider_id: 'esi_012', name: 'EduCare Student Insurance', price: 440, website_link: 'https://www.educareinsurance.com' },
+      { provider_id: 'wsi_013', name: 'World Student Insurance', price: 495, website_link: 'https://www.worldstudent.com' },
+      { provider_id: 'csi_014', name: 'Campus Shield Insurance', price: 365, website_link: 'https://www.campusshield.com' },
+      { provider_id: 'isi_015', name: 'International Student Insurance', price: 420, website_link: 'https://www.internationalstudentinsurance.com' },
+      { provider_id: 'tsi_016', name: 'Travel Student Insurance', price: 200, website_link: 'https://www.travelstudent.com' },
+      { provider_id: 'hsi_017', name: 'Health Shield International', price: 530, website_link: 'https://www.healthshieldintl.com' },
+      { provider_id: 'msi_018', name: 'Medicare Student Insurance', price: 340, website_link: 'https://www.medicarestudent.com' },
+      { provider_id: 'vsi_019', name: 'Visa Student Insurance', price: 175, website_link: 'https://www.visastudent.com' },
+      { provider_id: 'bsi_020', name: 'Budget Student Insurance', price: 120, website_link: 'https://www.budgetstudent.com' },
+      { provider_id: 'psi_021', name: 'Premium Student Insurance', price: 580, website_link: 'https://www.premiumstudent.com' },
+      { provider_id: 'cai_022', name: 'Campus Advantage Insurance', price: 460, website_link: 'https://www.campusadvantage.com' },
+      { provider_id: 'gai_023', name: 'Global Advantage Insurance', price: 540, website_link: 'https://www.globaladvantage.com' },
+      { provider_id: 'sai_024', name: 'Student Advantage Insurance', price: 405, website_link: 'https://www.studentadvantage.com' },
+      { provider_id: 'cci_025', name: 'Comprehensive Care Insurance', price: 590, website_link: 'https://www.comprehensivecare.com' },
+      { provider_id: 'fci_026', name: 'Full Coverage Insurance', price: 615, website_link: 'https://www.fullcoverage.com' },
+      { provider_id: 'bci_027', name: 'Basic Care Insurance', price: 250, website_link: 'https://www.basiccare.com' },
+      { provider_id: 'sci_028', name: 'Student Care Insurance', price: 320, website_link: 'https://www.studentcare.com' },
+      { provider_id: 'ici_029', name: 'International Care Insurance', price: 500, website_link: 'https://www.internationalcare.com' },
+      { provider_id: 'wci_030', name: 'World Care Insurance', price: 555, website_link: 'https://www.worldcare.com' }
       
     ];
     
@@ -194,9 +214,3 @@ app.post('/api/seed', async (req, res) => {
 app.listen(PORT, () => {
   console.log(`🚀 Server running on http://localhost:${PORT}`);
 });
-```
-
-### 3. **.env** (Environment Variables)
-```
-PORT=5000
-MONGODB_URI=mongodb://localhost:27017/insureconnect
