@@ -1,15 +1,4 @@
-import { StrictMode } from 'react'
-import { createRoot } from 'react-dom/client'
-import './index.css'
-import App from './App.jsx'
-
-createRoot(document.getElementById('root')).render(
-  <StrictMode>
-    <App />
-  </StrictMode>,
-)
-src/App.jsx
-javascriptimport React, { useState, useEffect } from 'react';
+import React, { useState, useEffect } from 'react';
 import { Search, ExternalLink, DollarSign, Filter } from 'lucide-react';
 
 const API_BASE_URL = 'http://localhost:5000/api';
@@ -79,11 +68,12 @@ function App() {
     setLoading(false);
   };
 
-  const handleClearFilter = () => {
+  const handleClearFilter = async () => {
     setMinPrice('');
     setMaxPrice('');
     setError('');
-    setFilteredProviders(providers);
+    // Reload all providers from API
+    await loadProviders();
   };
 
   return (
@@ -196,7 +186,7 @@ function App() {
                     </p>
                   </div>
 
-                  
+                  <a
                     href={provider.website_link}
                     target="_blank"
                     rel="noopener noreferrer"
