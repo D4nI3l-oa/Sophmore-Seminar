@@ -393,7 +393,7 @@ function App() {
             <div className="col-span-2">
               <div className="flex items-center gap-2 mb-4">
                 <Shield className="w-8 h-8 text-blue-400" />
-                <span className="text-2xl font-bold">InsureConnect</span>
+                <span className="text-2xl font-bold">InsureAid</span>
               </div>
               <p className="text-gray-400 mb-4 max-w-md">
                 Making health insurance simple and affordable for international students. 
