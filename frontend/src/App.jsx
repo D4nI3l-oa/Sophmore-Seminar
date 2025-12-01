@@ -86,7 +86,7 @@ function App() {
                 <Shield className="w-10 h-10 text-blue-600" />
               </div>
               <div>
-                <h1 className="text-5xl font-bold">InsureConnect</h1>
+                <h1 className="text-5xl font-bold">InsureAid</h1>
                 <p className="text-blue-100 text-sm mt-1">Your trusted insurance comparison platform</p>
               </div>
             </div>
@@ -94,8 +94,7 @@ function App() {
           
           <div className="max-w-3xl">
             <p className="text-xl text-blue-50 leading-relaxed mb-4">
-              Finding affordable health insurance as an international student just got easier. 
-              Compare top insurance providers, filter by your budget, and make informed decisions in minutes.
+              Your pockets should be as healthy as you are.
             </p>
             <div className="flex flex-wrap gap-6 text-sm">
               <div className="flex items-center gap-2">
@@ -432,10 +431,10 @@ function App() {
           </div>
           <div className="border-t border-gray-800 pt-8 flex flex-col md:flex-row justify-between items-center gap-4">
             <p className="text-gray-400 text-sm">
-              © 2025 InsureConnect. Helping international students find affordable insurance.
+              © 2025 InsureAid. Helping international students find affordable insurance.
             </p>
             <p className="text-gray-500 text-sm">
-              Built with ❤️ by students, for students | React • Node.js • MongoDB
+              Built by students, for students | React • Node.js • MongoDB
             </p>
           </div>
         </div>
